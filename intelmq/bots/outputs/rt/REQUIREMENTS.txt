@@ -1,0 +1,2 @@
+-e git://git.nic.cz/python-rt.git#egg=rt
+requests

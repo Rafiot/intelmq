@@ -861,6 +861,18 @@
                 "xmpp_to_user": "destination username",
                 "xmpp_user": "xmpp username"
             }
+        },
+        "RT": {
+			"description": "Automatically creates tickets in RTIR",
+			"module": "intelmq.bots.outputs.rt.output",
+			"parameters": {
+				"uri": "http://127.0.0.1/rt/REST/1.0/",
+				"user": "<username>",
+				"password": "<password>",
+				"RTQueue": "<Queue where of the tickets>",
+				"template": "<Template file>",
+				"useragent": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.3; Trident/7.0; .NET4.0E; .NET4.0C)"
+			}
         }
     },
     "Parser": {
