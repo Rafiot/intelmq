@@ -771,6 +771,13 @@
             "description": "url2fqdn is the bot responsible to parsing the fqdn from the url.",
             "module": "intelmq.bots.experts.url2fqdn.expert",
             "parameters": {}
+        },
+        "URL Abuse": {
+            "description": "URL abuse runs a bunch of queries against many different services.",
+            "module": "intelmq.bots.experts.urlabuse.expert",
+            "parameters": {
+                "url": "https://www.circl.lu/urlabuse/"
+            }
         }
     },
     "Output": {
