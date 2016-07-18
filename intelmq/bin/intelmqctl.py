@@ -12,7 +12,7 @@ import pkg_resources
 import psutil
 
 from intelmq import (DEFAULTS_CONF_FILE, PIPELINE_CONF_FILE, RUNTIME_CONF_FILE,
-                     STARTUP_CONF_FILE, SYSTEM_CONF_FILE, VAR_RUN_PATH)
+                     STARTUP_CONF_FILE, SYSTEM_CONF_FILE, VAR_RUN_PATH, ROOT_DIR)
 from intelmq.lib import utils
 from intelmq.lib.pipeline import PipelineFactory
 
@@ -151,7 +151,7 @@ class IntelMQContoller():
         DESCRIPTION = """
         description: intelmqctl is the tool to control intelmq system.
 
-        Outputs are logged to /opt/intelmq/var/log/intelmqctl"""
+        Outputs are logged to {}var/log/intelmqctl""".format(ROOT_DIR)
         USAGE = '''
         intelmqctl [start|stop|restart|status|reload|run] bot-id
         intelmqctl [start|stop|restart|status|reload]
