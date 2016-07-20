@@ -1,2 +1,2 @@
--e git://git.nic.cz/python-rt.git#egg=rt
+-e git+https://github.com/Rafiot/python-rt.git@prod#egg=rt
 requests
