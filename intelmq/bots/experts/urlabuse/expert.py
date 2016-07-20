@@ -13,7 +13,9 @@ class URLAbuseExpertBot(Bot):
     def url_to_events(self, src_event, url, info):
         global_event = Event(src_event)
         global_event.update('source.url', url)
+        all_emails = []
         if info.get('whois'):
+            all_emails = info.get('whois')
             contacts = list(set(info.get('whois')))
             global_event.add('source.abuse_contact', ','.join(contacts))
         if info.get('gsb'):
@@ -32,6 +34,13 @@ class URLAbuseExpertBot(Bot):
                     e = Event(global_event)
                     e.add('source.ip', ip)
                     data = info[ip]
+                    if data.get('whois'):
+                        all_emails += data.get('whois')
+                        contacts = list(set(all_emails))
+                        if e.get('source.abuse_contact'):
+                            e.update('source.abuse_contact', ','.join(contacts))
+                        else:
+                            e.add('source.abuse_contact', ','.join(contacts))
                     if data.get('bgp'):
                         ptr, asn_descr, asn = data.get('bgp')[:3]
                         e.add('source.reverse_dns', ptr)
