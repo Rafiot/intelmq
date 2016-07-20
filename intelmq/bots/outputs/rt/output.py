@@ -10,7 +10,11 @@ from string import Template
 class RTOutputBot(Bot):
 
     def is_up(self, ua):
-        r = requests.get(self.url, headers={'User-Agent': ua})
+        try:
+            r = requests.get(self.url, headers={'User-Agent': ua})
+        except:
+            self.logger.info("Unable to download {} (down or invalid).".format(self.url))
+            return False
         if len(r.text) > 5000:
             return True
         return False

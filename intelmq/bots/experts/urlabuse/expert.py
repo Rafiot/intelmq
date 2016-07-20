@@ -11,8 +11,6 @@ import time
 class URLAbuseExpertBot(Bot):
 
     def url_to_events(self, src_event, url, info):
-        self.logger.debug(url)
-        self.logger.debug(info)
         global_event = Event(src_event)
         global_event.update('source.url', url)
         if info.get('whois'):
@@ -34,7 +32,6 @@ class URLAbuseExpertBot(Bot):
                     e = Event(global_event)
                     e.add('source.ip', ip)
                     data = info[ip]
-                    self.logger.info(data)
                     if data.get('bgp'):
                         ptr, asn_descr, asn = data.get('bgp')[:3]
                         e.add('source.reverse_dns', ptr)
