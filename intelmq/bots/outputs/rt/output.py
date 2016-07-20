@@ -5,6 +5,7 @@ import rt
 from intelmq.lib.bot import Bot
 import requests
 from string import Template
+from defang import defang
 
 
 class RTOutputBot(Bot):
@@ -22,7 +23,7 @@ class RTOutputBot(Bot):
     def make_mail_template(self, event):
         content = []
 
-        content.append(event.get("source.url"))
+        content.append(defang(event.get("source.url")))
         if event.get("source.google_safe_browsing"):
             content.append('\tKnown as malicious on Google Safe Browsing: {}'.format(
                 event.get("source.google_safe_browsing")))
